@@ -1,5 +1,3 @@
-// Hello world!
-
 package main
 
 import (
@@ -20,6 +18,9 @@ func main() {
 		fmt.Fprint(w, quote.Go())
 	})
 
-	http.ListenAndServe(":8080", nil)
+	http.HandleFunc("/goodbye", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "Goodbye, World!")
+	})
 
+	http.ListenAndServe(":8080", nil)
 }
